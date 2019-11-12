@@ -124,7 +124,8 @@ function tree(t) {
   return tree(t.left) + t.key + tree(t.right)
 }
 
-// 5. Height of a BST
+// 5. Height of a BST - O(n) because after the root node,
+// the subsequent BSTs could just be link lists going both directions
 
 // 3, 1, 4, 6, 9, 2, 5, 7
 function bstHeight(bst, left = 0, right = 0) {
@@ -149,9 +150,53 @@ function kissBSTHeight(bst) {
   return Math.max(bst.left && kissBSTHeight(bst.left), bst.right && kissBSTHeight(bst.right)) + 1
 }
 
+// 6. Is it a BST?
+function checkIsBST(bst) {
+  if (bst.key === null) {
+    throw new Error('Invalid data')
+  }
+
+  if (!bst.left && !bst.right) {
+    return true
+  }
+
+  if (bst.left && bst.right) {
+    if (bst.key < bst.left.key || bst.key > bst.right.key) {
+      return false
+    }
+    return true && checkIsBST(bst.left) && checkIsBST(bst.right)
+  }
+  
+  if (bst.left) {
+    if (bst.key < bst.left.key) {
+      return false
+    }
+    return true && checkIsBST(bst.left)
+  }
+
+  if (bst.right) {
+    if (bst.key > bst.right.key) {
+      return false
+    }
+    return true && checkIsBST(bst.right)
+  }
+}
+
 function main() {
   const bst1 = new BinarySearchTree()
   const bst2 = new BinarySearchTree()
+  const bogusBST = {
+    key: 89,
+    left: {
+      key: 80,
+      left: {
+        key: 70,
+      },
+      right: {
+        key: 60
+      }
+    }
+  }
 
   bst1.insert(3)
   bst1.insert(1)
@@ -182,6 +227,10 @@ function main() {
   console.log('Exercise 5')
   console.log(bstHeight(bst1))
   console.log('KISS version', kissBSTHeight(bst1))
+  console.log('Exercise 6')
+  console.log(checkIsBST(bst1))
+  console.log(checkIsBST(bst2))
+  console.log(checkIsBST(bogusBST))
 }
 
 main()
