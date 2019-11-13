@@ -237,6 +237,77 @@ function balancedBst(bst) {
   }
 }
 
+// 9. Are they the same BSTs?
+// arr1 = [ 3, 5, 4, 6, 1, 0, 2 ]
+// arr2 = [ 3, 1, 5, 2, 4, 6, 0 ]
+// function sameBSTs(arr1, arr2) {
+//   // If they do not start with same key, identical BSTs are not possible
+//   if (arr1[0] !== arr2[0]) {
+//     return false
+//   }
+
+//   let stdArr1 = []
+//   let stdArr2 = []
+
+//   stdArr1.push(arr1[0])
+//   stdArr2.push(arr2[0])
+
+//   arr1.unshift()
+//   arr2.unshift()
+
+//   for (let i = 1; i < arr1.length; i++) {
+//     if (arr1[i] < stdArr1[0]) {
+//       stdArr1.push(arr1[i])
+//     }
+
+//     if (arr2[i] < stdArr2[0]) {
+      
+//     }
+//   }
+// }
+
+// function sameBSTArr(arr1, arr2) {
+//   return arr1 === arr2
+// }
+
+// function standardizeArr(arr) {
+//   let standardized = []
+//   standardized.push(arr[0])
+//   let i = 1
+//   while (i < arr.length) {
+//     if (arr[i] < standardized[0]) {
+//       standardized.push(arr[i])
+//       i = 1
+//       break
+//     } else {
+//       i++
+//     }
+//   }
+
+//   while (i < arr.length) {
+//     if (arr[i] > standardized[0]) {
+//       standardized.push(arr[i])
+//       i = 1
+//       break
+//     } else {
+//       i++
+//     }
+//   }
+
+//   return standardized
+// }
+
+// function standardArrRecursive(arr) {
+//   if (arr.length === 0) {
+//     throw new Error('Invalid')
+//   }
+//   if (arr.length === 1) {
+//     return arr
+//   }
+
+  
+// }
+
 function main() {
   const bst1 = new BinarySearchTree();
   const bst2 = new BinarySearchTree();
@@ -302,6 +373,11 @@ function main() {
   console.log(balancedBst(bst1));
   console.log(balancedBst(bst2));
   console.log(balancedBst(bst3));
+
+  let arr1 = [ 3, 5, 4, 6, 1, 0, 2 ]
+  let arr2 = [ 3, 1, 5, 2, 4, 6, 0 ]
+  console.log(standardizeArr(arr1))
+  console.log(standardizeArr(arr2))
 }
 
 main();
